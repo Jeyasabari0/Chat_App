@@ -26,30 +26,31 @@ const Chat = ({ socket, username, room }) => {
     }, [socket])
 
     return (
-        <div>
-            <div className='header'>
+        <div className="chat-window">
+            <div className="chat-header">
                 <h6>Live Chat</h6>
             </div>
-            <div className='body'>
-                {
-                    messageList.map((msg) => {
+            <div className="chat-body">
+                <div className='message-container'>
+                    {messageList.map((msg) => {
                         return (
-                            <div id={username === msg.author ? 'you' : 'others'}>
+                            <div className='message' id={username === msg.author ? 'you' : 'other'}>
 
                                 <div>
-                                    <div>
+                                    <div className='message-content'>
                                         <p>{msg.message}</p>
                                     </div>
-                                    <div>
-                                        <p>{msg.time} {msg.author}</p>
+                                    <div className="message-meta">
+                                        <p id="time">{msg.time}</p><p id="author"> {msg.author}</p>
                                     </div>
                                 </div>
                             </div>
                         )
                     })
-                }
+                    }
+                </div>
             </div>
-            <div className='footer'>
+            <div className="chat-footer">
                 <input value={curretMessage} placeholder='Hey...' onChange={(e) => { setCurrentMessage(e.target.value) }} onKeyUp={(e) => { e.key === 'Enter' && sendMessage() }} />
                 <button onClick={sendMessage}>&#9658;</button>
             </div>

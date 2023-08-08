@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       {!showChat ?
-        <div>
+        <div className="joinChatContainer">
           <h3>Let's Chat</h3>
           <input type='text' placeholder='Name' onChange={(e) => { setUsername(e.target.value) }} />
           <input type='text' placeholder='Room Id' onChange={(e) => { setRoom(e.target.value) }} />
